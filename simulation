@@ -1,0 +1,60 @@
+import random
+import numpy as np
+
+def animal_move(t_pos,h_pos):
+    
+    count=0
+    
+    while((t_pos!=70)and(h_pos!=70)):
+        
+        i=random.randrange(1,11)
+        #tortoise move
+        if(1<=i<=5):
+            t_pos+=3
+        elif(6<=i<=7):
+            t_pos-=6
+        else:
+            t_pos+=1           
+        #change if the position is negative
+        if (t_pos<1):
+            t_pos=1
+        #change to 70 is the position is more than 70
+        if (t_pos>70):
+            t_pos=70
+        #hare move
+        if(1<=i<=2):
+            h_pos=h_pos
+        elif(3<=i<=4):
+            h_pos+=9
+        elif(i==5):
+            h_pos-=12
+        elif(6<=i<=8):
+            h_pos+=1
+        else:
+            h_pos-=2
+        
+        #change if the position is negative
+        if(h_pos<1):
+            h_pos=1
+        #change to 70 is the position is more than 70    
+        if(h_pos>70):
+            h_pos=70
+        count+=1
+        #print out the result
+        print("count=",count)
+        if(t_pos<h_pos):
+            print(" "*(t_pos-1)+"T"+" "*(h_pos-t_pos-1)+"H")
+        elif(t_pos>h_pos):  
+            print(" "*(h_pos-1)+"H"+" "*(t_pos-h_pos-1)+"T")
+        else:
+            print("OUCH!!!")
+
+        if(t_pos==70):
+            print("The tortoise won")
+        elif(h_pos==70):
+            print("The hare won")
+        else:
+            continue
+    
+#call the function            
+animal_move(1,1)
